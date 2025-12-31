@@ -24,4 +24,4 @@ venv/
 .env.production.local
 
 # Personal files
-test.txt
+**/test.txt
