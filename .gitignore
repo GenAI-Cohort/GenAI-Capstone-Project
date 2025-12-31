@@ -2,7 +2,6 @@
 
 # Jupyter notebooks
 *.ipynb_checkpoints/
-*.ipynb
 *.pyc
 *.pyo
 *.pyd
@@ -25,4 +24,4 @@ venv/
 .env.production.local
 
 # Personal files
-Balaji/test.txt
+test.txt
