@@ -4,48 +4,10 @@ import pypdf
 import psycopg2
 import tiktoken
 from typing import List
-import sys
+
 # Load model (downloads ~90MB first time)
 model = SentenceTransformer('all-MiniLM-L6-v2')
 enc = tiktoken.get_encoding("cl100k_base")
-## creating connection to Postgres database
-def connect_to_postgres():
-    """ Connect to the PostgreSQL database server """
-    connection = None
-    try:
-        # Define connection parameters
-        params = {
-            "host": "localhost",
-            "database": "GenAI-Capstone",
-            "user": "postgres",
-            "password": "Lenovo"
-        }
-        
-        # Connect to the PostgreSQL server
-        print('Connecting to the PostgreSQL database...')
-        connection = psycopg2.connect(**params)
-        
-        # Create a cursor object
-        cursor = connection.cursor()
-        
-        # Execute a simple query
-        print('PostgreSQL database version:')
-        cursor.execute('SELECT version()')
-        
-        # Fetch the result and print
-        db_version = cursor.fetchone()
-        print(db_version)
-        
-        # Close the cursor and connection (handled automatically by the finally block below in this structure)
-        
-    except (Exception, psycopg2.DatabaseError) as error:
-        print(error)
-        sys.exit(1)
-    finally:
-        if connection is not None:
-            connection.close()
-            print('Database connection closed.')
-
 
 def chunk_text(text: str, chunk_size: int = 512, overlap: int = 50) -> List[str]:
     tokens = enc.encode(text)
@@ -78,7 +40,6 @@ def pdf_to_embeddings(filename: str):
         cur.execute(
             "INSERT INTO documents (filename, content, chunk, embedding) VALUES (%s, %s, %s, %s)",
             (filename, text, chunk, emb)
-
         )
     
     conn.commit()
@@ -110,4 +71,4 @@ if __name__ == "__main__":
     pdf_to_embeddings("5-beginner-ai-projects.pdf")
     
 # Test search
-print(search_documents("Summarize the document",2))
+print(search_documents("Summarize the document"))
