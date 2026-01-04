@@ -1,0 +1,30 @@
+# Add files and folders to ignore
+
+# Jupyter notebooks
+*.ipynb_checkpoints/
+*.pyc
+*.pyo
+*.pyd
+*.pyw
+*.pyz
+*.pywz
+*.pyzw
+*.pyzwz
+*.pyzwzw
+*.pyzwzwz
+**/__pycache__/
+
+# Virtual environments
+venv/
+.venv/
+.env
+.env.example
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Personal files
+**/test.txt
+
+**/.DS_Store
