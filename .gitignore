@@ -12,6 +12,7 @@
 *.pyzwz
 *.pyzwzw
 *.pyzwzwz
+**/__pycache__/
 
 # Virtual environments
 venv/
@@ -25,3 +26,5 @@ venv/
 
 # Personal files
 **/test.txt
+
+**/.DS_Store
