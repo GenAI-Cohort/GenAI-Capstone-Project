@@ -1,8 +1,5 @@
 import subprocess
-from pathlib import Path
-
-DATA_DIR = Path("/opt/homebrew/var/postgresql@14")   # your PGDATA
-LOG_FILE = DATA_DIR / "server.log"
+from config.database import DATA_DIR, LOG_FILE
 
 def is_postgres_running() -> bool:
     # pg_ctl status returns 0 if running, 3 if not running

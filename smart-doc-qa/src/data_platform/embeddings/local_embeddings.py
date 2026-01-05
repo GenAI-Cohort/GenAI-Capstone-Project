@@ -1,6 +1,6 @@
 import psycopg2 
-from document_processing.chunkers.base_chunker import chunk_text
-import document_processing.chunkers.base_chunker as base_chunker
+from  ..document_processing.chunkers.base_chunker import chunk_text
+from ..document_processing.chunkers import base_chunker
 
 def text_to_embeddings(text: str, filename: str):
     
