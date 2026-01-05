@@ -1,0 +1,58 @@
+{
+    // Python interpreter configuration
+    "python.defaultInterpreterPath": "${workspaceFolder}/venv/bin/python",
+    "python.terminal.activateEnvironment": true,
+    "python.terminal.activateEnvInCurrentTerminal": true,
+    
+    // Python path configuration
+    "python.analysis.extraPaths": [
+        "${workspaceFolder}/src",
+        "${workspaceFolder}"
+    ],
+    
+    // Auto-activate venv in terminal
+    "python.venvPath": "${workspaceFolder}",
+    "python.venvFolders": [
+        "${workspaceFolder}"
+    ],
+    
+    // Test configuration
+    "python.testing.pytestEnabled": true,
+    "python.testing.pytestArgs": [
+        "tests"
+    ],
+    "python.testing.unittestEnabled": false,
+    
+    // Jupyter Notebook configuration
+    "jupyter.kernels.filter": [
+        {
+            "type": "pythonEnvironment",
+            "path": "${workspaceFolder}/venv/bin/python"
+        }
+    ],
+    "notebook.defaultFormatter": "ms-python.python",
+    
+    // Formatting and linting
+    "python.formatting.provider": "none",
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": false,
+    
+    // File associations
+    "files.associations": {
+        "*.py": "python"
+    },
+    
+    // Exclude patterns
+    "files.exclude": {
+        "**/__pycache__": true,
+        "**/*.pyc": true
+    },
+    
+    // Search exclude
+    "search.exclude": {
+        "**/venv": true,
+        "**/__pycache__": true,
+        "**/*.pyc": true
+    }
+}
+
