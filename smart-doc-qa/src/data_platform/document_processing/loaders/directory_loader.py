@@ -1,7 +1,7 @@
 # directory_loader.py
 import os
-from document_processing.loaders import EXTENSION_LOADERS
-from embeddings.local_embeddings import text_to_embeddings as Vectorize_text_to_pgvector
+from . import EXTENSION_LOADERS
+from src.data_platform.embeddings.local_embeddings import text_to_embeddings as Vectorize_text_to_pgvector
 
 def Load_and_vectorize(root_dir: str):
     """
