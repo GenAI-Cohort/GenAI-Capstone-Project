@@ -1,10 +1,10 @@
 from config.db_connection import get_connection
 
-def get_category_id_from_document_category(document_category: str):
+def get_project_id_from_project(project_name: str):
         try:
             conn = get_connection()
             cur = conn.cursor()
-            cur.execute("SELECT id FROM public.categories WHERE name = %s;", (document_category,))
+            cur.execute("SELECT id FROM public.projects WHERE name = %s;", (project_name,))
             rows = cur.fetchall()
             for row in rows:
                 print(row)
@@ -14,4 +14,4 @@ def get_category_id_from_document_category(document_category: str):
             if conn:
                 cur.close()
                 conn.close()
-        return row[0]  # Assuming category name is unique and returns a single id
+        return row[0]  # Assuming project name is unique and returns a single id    

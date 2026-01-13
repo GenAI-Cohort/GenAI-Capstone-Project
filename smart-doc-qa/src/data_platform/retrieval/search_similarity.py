@@ -30,8 +30,8 @@ def search_pgvector(query_string, top_k=5, min_similarity=0.7):
         # 3. Execute Search
         # We use 1 - (embedding <=> %s) to convert cosine distance to similarity
         sql = """
-        SELECT id, filename, chunk, content, 1 - (embedding <=> %s::vector) AS similarity
-        FROM documents_1
+        SELECT id, project_id, category_id, document_id, chunk_text, 1 - (embedding <=> %s::vector) AS similarity
+        FROM chunks
         WHERE 1 - (embedding <=> %s::vector) >= %s
         ORDER BY similarity DESC
         LIMIT %s;
