@@ -117,3 +117,97 @@ CREATE TABLE chunk_references (
     confidence_score FLOAT,  -- AI-detected reference confidence
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+---Project and Category Management data
+INSERT INTO public.projects (
+    id,
+    name,
+    description,
+    created_by,
+    created_at,
+    settings
+) VALUES
+    (1, 'CapStone', 'GenAI Capstone project', 'Karthik', '2026-01-10 10:00:00+00', '{"active": "true"}');
+
+    -- Example categories
+INSERT INTO public.categories (
+    id,
+    name,
+    description,
+    color,
+    icon,
+    chunking_strategy,
+    metadata_schema,
+    created_at
+) VALUES
+    (
+        1,
+        'Requirements',
+        'Requirements document',
+        '#3366ff',
+        'requirements_icon',
+        '{"chunk_type":"text","chunk_size":500,"chunk_overlap":50}',
+        '{"requirement_id": "REQ-001", "priority": "high", "status": "approved"}'::jsonb,
+        '2026-01-10 15:45:00+00'
+    ),
+    (
+        2,
+        'Business Rules',
+        'Business Rules document',
+        '#ff6633',
+        'business_rules_icon',
+        '{"chunk_type":"text","chunk_size":500,"chunk_overlap":50}',
+        '{"rule_id": "BR-101", "category": "compliance", "effective_date": "2026-01-01"}'::jsonb,
+        '2026-01-10 16:00:00+00'
+    ),
+    (
+    3,
+        'Design Specifications',
+        'Design Specifications document',
+        '#33cc33',
+        'design_specs_icon',
+        '{"chunk_type":"text","chunk_size":500,"chunk_overlap":50}',
+        '{"spec_id": "DS-202", "version": "1.0", "approved_by": "lead_designer"}'::jsonb,
+        '2026-01-10 16:15:00+00'
+    ),
+    (
+    4,
+        'User Manuals',
+        'User Manuals document',
+        '#ffcc33',
+        'user_manuals_icon',
+        '{"chunk_type":"text","chunk_size":500,"chunk_overlap":50}',
+        '{"manual_id": "UM-404", "version": "2.1", "language": "en"}'::jsonb,
+        '2026-01-10 16:45:00+00'    
+    ),
+    (
+    5,
+        'Contracts',
+        'Contracts document',
+        '#9933ff',
+        'contracts_icon',
+        '{"chunk_type":"text","chunk_size":500,"chunk_overlap":50}',
+        '{"contract_id": "CT-505", "party_a": "Company A", "party_b": "Company B", "effective_date": "2026-02-01"}'::jsonb,
+        '2026-01-10 17:00:00+00'        
+    ),
+    (
+    6,
+        'Compliance Documents',
+        'Compliance Documents',
+        '#66ff66',
+        'compliance_docs_icon',
+        '{"chunk_type":"text","chunk_size":500,"chunk_overlap":50}',
+        '{"compliance_id": "CD-111", "regulation": "GDPR", "status": "compliant"}'::jsonb,
+        '2026-01-10 18:30:00+00'
+    );
+-- End of File
+-- Reset document ID sequence
+CREATE SEQUENCE public.document_id_seq;
+SELECT setval('public.document_id_seq', COALESCE((SELECT MAX(id) FROM public.documents), 1));
+ALTER TABLE public.documents ALTER COLUMN id SET DEFAULT nextval('public.document_id_seq');
+
+-- Reset chunk ID sequence
+CREATE SEQUENCE public.chunk_id_seq;
+SELECT setval('public.chunk_id_seq', COALESCE((SELECT MAX(id) FROM public.chunks), 1));
+ALTER TABLE public.chunks ALTER COLUMN id SET DEFAULT nextval('public.chunk_id_seq'); 
+  
