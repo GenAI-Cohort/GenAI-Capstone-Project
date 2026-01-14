@@ -2,7 +2,7 @@ from pathlib import Path
 import os
 from dotenv import load_dotenv
 load_dotenv()
-DATA_DIR = Path("/opt/homebrew/var/postgresql@14")   # your PGDATA
+DATA_DIR = Path("/opt/homebrew/var/postgresql@18")   # your PGDATA
 LOG_FILE = DATA_DIR / "server.log"
 
 class Settings:

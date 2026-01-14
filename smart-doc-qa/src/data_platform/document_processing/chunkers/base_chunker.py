@@ -7,7 +7,7 @@ model = SentenceTransformer('all-MiniLM-L6-v2')
 enc = tiktoken.get_encoding("cl100k_base")
 
 def chunk_text(text: str, chunk_size: int = 512, overlap: int = 50) -> List[str]:
-    tokens = enc.encode(text)
+    tokens = enc.encode(text, allowed_special="all")
     chunks = []
     for i in range(0, len(tokens), chunk_size - overlap):
         chunk_tokens = tokens[i:i + chunk_size]
