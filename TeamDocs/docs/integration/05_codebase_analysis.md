@@ -64,8 +64,8 @@ class DocumentProcessor:
         # Maintains context with overlap
 ```
 
-**Status:** ✅ Working well
-**Dependencies:** PyPDF2, LangChain
+**Status:** ✅ Working well  
+**Dependencies:** PyPDF2, LangChain  
 **Integration:** None needed - works independently
 
 ---
@@ -92,8 +92,8 @@ class EmbeddingGenerator:
         # Wrapper for single text embedding
 ```
 
-**Status:** ✅ Working well
-**Dependencies:** OpenAI SDK
+**Status:** ✅ Working well  
+**Dependencies:** OpenAI SDK  
 **Integration:** None needed - works independently
 
 ---
@@ -121,8 +121,8 @@ class VectorStoreManager:
         # Returns: [{"text": str, "score": float, "metadata": dict}]
 ```
 
-**Status:** ✅ Working well, but not accessible externally
-**Dependencies:** Pinecone SDK
+**Status:** ✅ Working well, but not accessible externally  
+**Dependencies:** Pinecone SDK  
 **Integration:** ⚠️ **CRITICAL - Need to expose `search()` via API**
 
 ---
@@ -153,8 +153,8 @@ class Config:
     API_HOST = os.getenv("API_HOST", "0.0.0.0")
 ```
 
-**Status:** ✅ Complete, may need API config additions
-**Dependencies:** python-dotenv
+**Status:** ✅ Complete, may need API config additions  
+**Dependencies:** python-dotenv  
 **Integration:** Add API configuration variables
 
 ---
@@ -184,8 +184,8 @@ def setup_logger(name: str, level: int = logging.INFO) -> logging.Logger:
     return logger
 ```
 
-**Status:** ✅ Complete and ready to use
-**Dependencies:** Standard library
+**Status:** ✅ Complete and ready to use  
+**Dependencies:** Standard library  
 **Integration:** Use for API logging
 
 ---
@@ -262,8 +262,8 @@ if __name__ == "__main__":
     )
 ```
 
-**Estimated Lines:** ~150
-**Estimated Time:** 2 hours
+**Estimated Lines:** ~150  
+**Estimated Time:** 2 hours  
 **Dependencies:** fastapi, uvicorn
 
 ---
@@ -318,8 +318,8 @@ class SupervisorAgent:
         return response
 ```
 
-**Status:** ✅ Framework complete
-**Dependencies:** Internal agents
+**Status:** ✅ Framework complete  
+**Dependencies:** Internal agents  
 **Integration:** None needed - just orchestrates
 
 ---
@@ -341,8 +341,8 @@ class RouterAgent:
         # Returns: "search", "summarize", "compare", etc.
 ```
 
-**Status:** ✅ Complete
-**Dependencies:** query_classifier
+**Status:** ✅ Complete  
+**Dependencies:** query_classifier  
 **Integration:** None needed
 
 ---
@@ -396,8 +396,8 @@ class RetrieverAgent:
             return []  # Graceful degradation
 ```
 
-**Status:** ⚠️ **NEEDS UPDATE** - Replace mocks with API client
-**Estimated Lines:** ~50 lines to modify
+**Status:** ⚠️ **NEEDS UPDATE** - Replace mocks with API client  
+**Estimated Lines:** ~50 lines to modify  
 **Estimated Time:** 30 minutes
 
 ---
@@ -430,7 +430,7 @@ class GeneratorAgent:
         return response.content
 ```
 
-**Status:** ✅ Logic is fine, just needs real documents
+**Status:** ✅ Logic is fine, just needs real documents  
 **Integration:** Will automatically work once retriever is fixed
 
 ---
@@ -439,7 +439,7 @@ class GeneratorAgent:
 
 **Purpose:** Classify query intent
 
-**Status:** ✅ Complete
+**Status:** ✅ Complete  
 **Integration:** None needed
 
 ---
@@ -534,8 +534,8 @@ class DataPlatformClient:
             return False
 ```
 
-**Estimated Lines:** ~100
-**Estimated Time:** 1 hour
+**Estimated Lines:** ~100  
+**Estimated Time:** 1 hour  
 **Dependencies:** requests, tenacity
 
 ---
@@ -572,7 +572,7 @@ if prompt := st.chat_input("Ask a question about your documents"):
     st.session_state.messages.append({"role": "assistant", "content": response})
 ```
 
-**Status:** ✅ Complete - works with current mock setup
+**Status:** ✅ Complete - works with current mock setup  
 **Integration:** Will automatically work once agents use real data
 
 ---
