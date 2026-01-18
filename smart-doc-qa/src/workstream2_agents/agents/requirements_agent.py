@@ -12,6 +12,7 @@ from typing import List, Dict, Any, Optional
 from dataclasses import dataclass, field
 from abc import ABC, abstractmethod
 import re
+from src.data_platform.api.client import DataPlatformClient
 
 
 # ============================================================================
@@ -134,11 +135,13 @@ class OllamaLLM:
         }
         
         try:
+            print(f"Sending request to Ollama: {payload['model']}")
             response = requests.post(
                 self.api_endpoint,
                 json=payload,
-                timeout=120  # 2 minute timeout for local LLM
+                timeout=600  # 2 minute timeout for local LLM
             )
+            # print(f"Received response from Ollama: {response.json()}")
             response.raise_for_status()
             
             result = response.json()
@@ -165,7 +168,7 @@ class OllamaLLM:
 # MOCK DATA PLATFORM CLIENT (for Workstream 1 integration)
 # ============================================================================
 
-class DataPlatformClient:
+class DataPlatformClient_deprecated:
     """
     Client for interacting with Workstream 1 data platform.
     Replace with actual implementation once Workstream 1 APIs are ready.
@@ -326,7 +329,7 @@ class RequirementsAgent(BaseAgent):
     def __init__(
         self,
         category_id: int,
-        data_platform_client: DataPlatformClient,
+###        data_platform_client: DataPlatformClient, ### This is mock data platform client for now
         llm_base_url: str = "http://localhost:11434",
         llm_model: str = "llama3.1:8b"
     ):
@@ -338,7 +341,8 @@ class RequirementsAgent(BaseAgent):
             llm_model=llm_model,
             temperature=0.1  # Very precise for requirements
         )
-        self.data_platform = data_platform_client
+    ###    self.data_platform = data_platform_client ### This is mock data platform client for now
+        self.data_platform = DataPlatformClient()
         self.llm = OllamaLLM(base_url=llm_base_url, model=llm_model)
     
     def get_system_prompt(self) -> str:

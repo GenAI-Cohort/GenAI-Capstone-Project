@@ -82,12 +82,11 @@ def insert_chunk(document_id: int, category_id: int, project_id: int, chunk: str
             'Introduction',              # section_title (example)
             ['Introduction', 'Overview'], # heading_hierarchy (example)
             emb,                         # embedding
-            '{"source": "pdf", "lang": "en"}',  # metadata (example)
+           # '{"source": "pdf", "lang": "en"}',  # metadata (example)
+            '{"requirement_id": "REQ-chunk_id", "priority": "high", "status": "approved", "section": "Introduction", "dependencies": []}',
             chunk                        # search_vector source text
         )
     )
     conn.commit()
     cur.close()
     conn.close()
-    
-

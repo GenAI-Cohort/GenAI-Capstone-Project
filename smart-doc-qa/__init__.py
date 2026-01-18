@@ -26,7 +26,7 @@ if __name__ == "__main__":
     search_query = "What is Retrieval Augmented Generation?"
     print("++++++++++++++++++++✅ Search 2 started.++++++++++++++++++++")
     print(f"Searching for: {search_query}")
-    hits = search_pgvector(search_query, top_k=5, min_similarity=0.5)
+    hits = search_pgvector(search_query, top_k=5, min_similarity=0.2)
     for row in hits:
         document = getdocument_by_id(row['document_id'])
         print(f"[{row['similarity']:.4f}] \n Document: {document['filename']}\nchunk: {row['chunk_text']}\n")
