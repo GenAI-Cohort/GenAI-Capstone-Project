@@ -14,7 +14,6 @@ from abc import ABC, abstractmethod
 import re
 from src.data_platform.api.client import DataPlatformClient
 
-
 # ============================================================================
 # DATA STRUCTURES
 # ============================================================================
@@ -362,11 +361,12 @@ Guidelines:
 
 Format your response as JSON:
 {
-  "answer": "Your detailed analysis here",
-  "confidence": "high|medium|low",
-  "key_sources": ["REQ-001", "REQ-045"],
-  "suggests_consulting": ["Design Specialist", "Tech Specs Expert"],
-  "reasoning": "Why other agents might be needed"
+    "answer": "Your detailed analysis here",
+    "confidence": "high|medium|low",
+    "key_sources": ["REQ-001", "REQ-045"],
+    "suggests_consulting": ["Design Specialist", "Tech Specs Expert"],
+    "reasoning": "Why other agents might be needed"
+}
 }"""
     
     def can_handle_query(self, query: str, context: AgentContext) -> float:

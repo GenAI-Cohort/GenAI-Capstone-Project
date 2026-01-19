@@ -33,4 +33,4 @@ if __name__ == "__main__":
     print("✅ Document ingestion and vectorization completed.")
     # Test search
     print("🔍 Searching documents...")
-    print(search_documents("Summarize the document"))
+    print(search_documents("Retreival Augmented Generation"))
