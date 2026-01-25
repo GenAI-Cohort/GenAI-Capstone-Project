@@ -1,5 +1,7 @@
 {
     "python.analysis.extraPaths": [
         "./smart-doc-qa"
-    ]
+    ],
+    "snyk.advanced.organization": "e185ad85-61e6-4165-b9da-a026b917eb7f",
+    "snyk.advanced.autoSelectOrganization": true
 }
