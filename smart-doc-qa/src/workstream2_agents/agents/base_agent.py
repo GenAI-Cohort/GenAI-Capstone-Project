@@ -10,13 +10,15 @@ from typing import List, Dict, Any, Optional
 # Add parent directory to path
 import sys
 from pathlib import Path
-sys.path.insert(0, str(Path(__file__).parent.parent))
+_project_root = Path(__file__).parent.parent.parent.parent
+if str(_project_root) not in sys.path:
+    sys.path.insert(0, str(_project_root))
 
-from agents.data_models import (
+from src.workstream2_agents.agents.data_models import (
     AgentContext, AgentResponse, ConfidenceLevel, Source
 )
-from utils.ollama_client import ollama_client, OllamaException
-from config.settings import settings
+from src.workstream2_agents.utils.ollama_client import ollama_client, OllamaException
+from src.workstream2_agents.config.settings import settings
 
 logger = logging.getLogger(__name__)
 

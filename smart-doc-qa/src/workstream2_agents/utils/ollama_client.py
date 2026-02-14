@@ -4,8 +4,9 @@ Helper script to set up Python path for imports
 # Add parent directory to path
 import sys
 from pathlib import Path
-sys.path.insert(0, str(Path(__file__).parent.parent))
-
+_project_root = Path(__file__).parent.parent.parent.parent
+if str(_project_root) not in sys.path:
+    sys.path.insert(0, str(_project_root))
 
 """
 Ollama API client wrapper for LLM interactions
@@ -14,7 +15,7 @@ import requests
 import json
 import logging
 from typing import Dict, Any, Optional
-from config.settings import settings
+from src.workstream2_agents.config.settings import settings
 
 logger = logging.getLogger(__name__)
 
